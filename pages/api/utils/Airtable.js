@@ -1,12 +1,10 @@
 
 
 const Airtable = require('airtable');
-const APIKEY = 'key3JTA1vY72mTNb1';
-const base = new Airtable({ apiKey: APIKEY }).base(
-  process.env.AIRTABLE_BASE_ID
+const base = new Airtable({ apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY }).base(
+  process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID,
 );
-
-const table = base(process.env.AIR_TABLE_NAME);
+const table = base(process.env.NEXT_PUBLIC_AIRTABLE_TABLE_NAME);
 
 const minifyRecords = (records) => {
   return records.map((record) => getMinifiedRecord(record));
