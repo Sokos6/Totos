@@ -1,4 +1,19 @@
+import React, { useContext } from 'react';
+import { TotosContext } from '../contexts/TotosContext';
+
 export default function Toto({ toto }) {
+  const { updateToto, deleteToto } = useContext(TotosContext);
+
+  const handleToggleCompleted = () => {
+    const updatedFields = {
+      ...toto.fields,
+      completed: !toto.fields.completed,
+    };
+
+    const updatedToto = { id: toto.id, fields: updatedFields };
+    updateToto(updatedToto);
+  };
+
   return (
     <li className='bg-white flex items-center shadow-lg rounded-lg my-2 py-2 px-4'>
       <input
@@ -7,7 +22,7 @@ export default function Toto({ toto }) {
         id='completed'
         checked={toto.fields.completed}
         className='mr-2 form-checkbox h-5 w-5'
-        onChange={() => {}}
+        onChange={handleToggleCompleted}
       />
       <p
         className={`flex-1 text-gray-800 ${

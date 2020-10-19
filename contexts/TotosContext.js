@@ -31,7 +31,7 @@ const TotosProvider = ({ children }) => {
     }
   };
 
-  const updateToto = async (updatedTodo) => {
+  const updateToto = async (updatedToto) => {
     try {
       const res = await fetch('/api/updateToto', {
         method: 'PUT',
@@ -45,7 +45,7 @@ const TotosProvider = ({ children }) => {
           (toto) => toto.id === updatedToto.id
         );
         existingToto.fields = updatedToto.fields;
-        return existingTodos;
+        return existingTotos;
       });
     } catch (err) {
       console.error(err);

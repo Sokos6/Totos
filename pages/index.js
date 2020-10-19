@@ -1,9 +1,17 @@
+import React, { useContext, useEffect } from 'react'
 import Head from 'next/head';
 import { table, minifyRecords } from './api/utils/Airtable';
 import Toto from '../components/Toto';
 import Navbar from '../components/Navbar';
+import { TotosContext } from '../contexts/TotosContext';
 
 export default function Home({ initialTotos }) {
+  const { totos, setTotos } = useContext(TotosContext);
+
+  useEffect(() => {
+    setTotos(initialTotos);
+  }, []);
+
   return (
     <div className='max-w-xl m-auto p-2'>
       <Head>
@@ -14,8 +22,7 @@ export default function Home({ initialTotos }) {
         <Navbar />
         <>
           <ul>
-            {initialTotos &&
-              initialTotos.map((toto) => <Toto toto={toto} key={toto.id} />)}
+            {totos && totos.map((toto) => <Toto key={toto.id} toto={toto} />)}
           </ul>
         </>
       </main>
