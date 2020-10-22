@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { TotosContext } from '../contexts/TotosContext';
 
 export default function TotoForm() {
   const [toto, setToto] = useState('');
+  const { addToto } = useContext(TotosContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addToto(toto);
+    setToto('');
+  };
 
   return (
-    <form className='form my-6'>
+    <form className='form my-6' onSubmit={handleSubmit}>
       <div className='flex flex-col text-sm mb-2'>
         <label htmlFor='toto' className='font-bold mb-2 text-gray-800'>
           Toto

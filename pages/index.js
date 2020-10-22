@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import { table, minifyRecords } from './api/utils/Airtable';
 import Toto from '../components/Toto';
+import TotoForm from '../components/TotoForm';
 import Navbar from '../components/Navbar';
 import { TotosContext } from '../contexts/TotosContext';
 import auth0 from './api/utils/auth0';
@@ -16,7 +17,7 @@ export default function Home({ initialTotos, user }) {
   return (
     <div className='max-w-xl m-auto p-2'>
       <Head>
-        <title>Totos</title>
+        <title>Nextiva Totos</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
